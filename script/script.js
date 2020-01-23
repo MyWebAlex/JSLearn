@@ -5,4 +5,4 @@ let money = 0,
     mission, 
     period;
 alert('На часах час пятнадцать ночи');
-console.log('И я жутко хочу спаать');
+console.log('И я жутко хочу cпаать');
