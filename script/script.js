@@ -1,4 +1,4 @@
-let money, 
+let money = 1, 
     income, 
     addExpenses, 
     deposit, 
