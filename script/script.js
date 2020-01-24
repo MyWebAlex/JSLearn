@@ -4,11 +4,14 @@ let money = 48030,
     deposit = true, 
     mission = 1000000, 
     period = 12,
-    budgetDay = money / 30;
+    budgetDay = money / 30,
+    num = 266219;
 
-console.log(typeof money + '\n' + typeof income + '\n' + typeof deposit);
-console.log(addExpenses.length);
-console.log('Период равен '+ period + ' месяцев' + '\n' 
-            + 'Цель заработать ' + mission + ' рублей');
-console.log(addExpenses.toLowerCase().split(', '));
-console.log('budgetDay: ', budgetDay);
+let strNum = String(num),
+    newNum = 1;
+for (let i = 0; i < strNum.length; i++)
+    newNum *= +strNum[i];
+console.log('Произведение цифр переменной num: ', newNum);
+newNum **= 3;
+strNum = String(newNum);
+console.log(strNum[0] + strNum[1]);
