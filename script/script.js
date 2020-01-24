@@ -1,8 +1,6 @@
-let money = 0, 
-    income, 
-    addExpenses, 
-    deposit, 
-    mission, 
-    period;
-alert('На часах час пятнадцать ночи');
-console.log('И я жутко хочу cпаать');
+let money = 48030, 
+    income = 'freelance', 
+    addExpenses = 'water, gas, power', 
+    deposit = true, 
+    mission = 1000000, 
+    period = 12;
