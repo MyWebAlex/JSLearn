@@ -7,11 +7,16 @@ let money = 48030,
     budgetDay = money / 30,
     num = 266219;
 
-let strNum = String(num),
-    newNum = 1;
-for (let i = 0; i < strNum.length; i++)
-    newNum *= +strNum[i];
-console.log('Произведение цифр переменной num: ', newNum);
-newNum **= 3;
-strNum = String(newNum);
-console.log(strNum[0] + strNum[1]);
+let newNum = num;
+num = 1;
+while (newNum > 0) {
+    let tmp = newNum % 10;
+    newNum = (newNum - newNum % 10) / 10;
+    num *= tmp;
+}
+newNum = null;
+console.log('Произведение цифр переменной num: ', num);
+
+num **= 3;
+
+console.log('Две первые цифры переменной num: ' + String(num).substr(0, 2));
