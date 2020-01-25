@@ -19,4 +19,4 @@ console.log('Произведение цифр переменной num: ', num)
 
 num **= 3;
 
-console.log('Две первые цифры переменной num: ' + String(num).substr(0, 2));
+console.log('Две первые цифры переменной num: ' + String(num).substr(0, 2) );
