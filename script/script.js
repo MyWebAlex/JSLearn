@@ -20,7 +20,7 @@ console.log(addExpenses.toLowerCase().split(', '));
 console.log('budgetDay: ', budgetDay);
 
 //Задание 2
-while (!(money = parseInt(prompt('Какой Ваш месячный доход?')))) { }
+while ( !(money = parseInt( prompt('Какой Ваш месячный доход?') )) ) { }
 //Задание 3
 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый' 
                     + 'период через запятую').split(', ');
@@ -29,9 +29,9 @@ deposit = confirm('Есть ли у вас депозит в банке?');
 
 //задание 5
 expenses1 = prompt('Введите обязательную статью расходов.');
-while (!(amount1 = parseInt(prompt('Во сколько это обойдется?')))) { }
+while ( !(amount1 = parseInt( prompt('Во сколько это обойдется?')) ) ) { }
 expenses2 = prompt('Введите обязательную статью расходов.');
-while (!(amount2 = parseInt(prompt('Во сколько это обойдется?')))) { }
+while ( !(amount2 = parseInt( prompt('Во сколько это обойдется?') )) ) { }
 
 //задание 6
 budgetMonth = money - amount1 - amount2;
