@@ -23,7 +23,6 @@ else if (lang === 'ru') {
 else {
     alert('Страница имеет неверный язык');
 }
-    
 
 //Способ b
 switch (lang) {
