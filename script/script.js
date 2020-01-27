@@ -55,6 +55,6 @@ else if (budgetDay === 600)
 else if (budgetDay > 0)
     console.log('К сожалению у вас уровень дохода ниже среднего');
 else if (budgetDay === 0)
-    console.log('Вы живёте в притык');
+    console.log('Вы живёте впритык');
 else
     console.log('В вашей жизни Что-то пошло не так');
