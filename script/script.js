@@ -1,3 +1,4 @@
+'use strict';
 let money = 48030, 
     income = 'freelance', 
     addExpenses = 'Water, Gas, Power', 
