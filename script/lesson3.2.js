@@ -2,15 +2,10 @@
 //Задание 1
 let lang = document.getElementsByTagName('html')[0].getAttribute('lang');
 
-
-
 let weekDays = [
     ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], 
     ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
 ];
-
-
-
 
 let li = document.getElementsByTagName('li');
 
