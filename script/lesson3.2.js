@@ -1,3 +1,4 @@
+'use strict';
 //Задание 1
 let lang = document.getElementsByTagName('html')[0].getAttribute('lang');
 let weekDays = {'en':['Sunday', 'Monday', 'Tuesday', 'Wednesday', 
