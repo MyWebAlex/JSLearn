@@ -42,7 +42,7 @@ switch (lang) {
 
 //Способ c
 for (let i = 0; i < 7; i++) {
-    li[i].innerHTML = weekDays[lang][i];
+    li[i].innerHTML = weekDays.lang[i];
 }
 
 //Задание 2
