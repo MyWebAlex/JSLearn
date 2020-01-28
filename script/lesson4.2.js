@@ -5,12 +5,7 @@ const strChanging = function(str) {
         alert('Переменная не является строкой');
         return;
     }
-    while (str[0] === ' ') {
-        str = str.slice(1);
-    }
-    while (str[str.length - 1] === ' ') {
-        str = str.slice(0, str.length - 2);
-    }
+    str = str.trim();
     if (str.length > 30) {
         str = str.slice(0, 30) + '...';
     }
