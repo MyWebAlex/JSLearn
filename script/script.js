@@ -41,11 +41,7 @@ const getOnlyNumberFromPrompt = function(message, defaultValue) {
     } while ( !tmp );
     return tmp;
 };
-<<<<<<< HEAD
 // Функция, которая принимает текст через prompt
-=======
-
->>>>>>> fc9c44b... Запретил ввод пустых строк в prompt
 const getPrompt = function(message, defaultValue) {
     let tmp;
     do { 
