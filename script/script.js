@@ -39,13 +39,21 @@ const getStatusIncome = function(accumulatedDay) {
     else { return 'В вашей жизни Что-то пошло не так'; }
 };
 // Функция, которая через prompt требует число
-const getOnlyNumberFromPrompt = function(message, defaultMessage) {
+const getOnlyNumberFromPrompt = function(message, defaultValue) {
     let tmp;
     do { 
-        tmp = parseInt( prompt(message, defaultMessage) );
+        tmp = parseInt( prompt(message, defaultValue) );
     } while ( !tmp );
     return tmp;
 };
+
+const getPrompt = function(message, defaultValue) {
+    let tmp;
+    do { 
+        tmp = prompt(message, defaultValue);
+    } while ( !tmp );
+    return tmp;
+}
 // Функция, которая разбивает строку на подстроки через ', ' и приводит все символы к нижнему регистру
 const getArrayFromString = function(str) {
     str = str.toLowerCase();
@@ -69,12 +77,12 @@ let money, // Доход в месяц
 // Блок Программы //
 // Вписываем данные
 money = getOnlyNumberFromPrompt('Какой Ваш месячный доход?', 35000);
-addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
+addExpenses = getPrompt('Перечислите возможные расходы за рассчитываемый период через запятую',
 'Вода, Газ, Электричество');
 deposit = confirm('Есть ли у вас депозит в банке?');
 income = prompt('Введите дополнительную статью доходов, если есть.', 'Фриланс');
-for (let i = 0; i < 5; i++) {
-    expenses[i] = prompt('Введите обязательную статью расходов.', i === 0 ? 'Учёба' : 'Еда');
+for (let i = 0; i < 2; i++) {
+    expenses[i] = getPrompt('Введите обязательную статью расходов.', i === 0 ? 'Учёба' : 'Еда');
     amounts[i] = getOnlyNumberFromPrompt('Во сколько это обойдется?', i === 0 ? 13000 : 10000);
 }
 
