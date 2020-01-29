@@ -1,4 +1,4 @@
-'use strict'; // Lkx строгой проверки кода
+'use strict'; // Для строгой проверки кода
 
 
 // Блок функций //
@@ -36,7 +36,9 @@ const getStatusIncome = function(accumulatedDay) {
 // Функция, которая через prompt требует число
 const getOnlyNumberFromPrompt = function(message, defaultMessage) {
     let tmp;
-    while ( !(tmp = parseInt( prompt(message, defaultMessage) )) ) { let n = true; }
+    while ( !tmp ) { 
+        tmp = parseInt( prompt(message, defaultMessage) );
+    }
     return tmp;
 };
 // Функция, которая разбивает строку на подстроки через ', ' и приводит все символы к нижнему регистру
