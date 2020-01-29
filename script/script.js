@@ -7,8 +7,12 @@ const getIncomeMonth = function(income1) { // Позже добавить income
     return income1;
 };
 // Функция, рассчитывающая все расходы
-const getExpensesMonth = function(expense1, expense2) {
-    return expense1 + expense2;
+const getExpensesMonth = function(expenses) {
+    let tmp = 0;
+    for (let i = 0; i < expenses.length; i++) {
+        tmp += expenses[i];
+    }
+    return tmp;
 };
 // Функция, рассчитывающая остаток в месяц после доходов и расходов
 const getAccumulatedMonth = function(incomes, expenses) {
@@ -53,32 +57,39 @@ const getArrayFromString = function(str) {
 
 // Блок переменных //
 const mission = 1000000; // Сколько хотим заработать
-const money = getOnlyNumberFromPrompt('Какой Ваш месячный доход?', 35000); // Доход в месяц
-let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
-'Вода, Газ, Электричество'); // Дополнительные расходы
-const deposit = confirm('Есть ли у вас депозит в банке?'); // Есть ли депозит?
-const expenses1 = prompt('Введите обязательную статью расходов.', 'Учёба'); // Осн. расходы 1
-const amount1 = getOnlyNumberFromPrompt('Во сколько это обойдется?', 13000); // Осн. расходы 1
-const expenses2 = prompt('Введите обязательную статью расходов.', 'Еда'); // Осн. расходы 2
-const amount2 = getOnlyNumberFromPrompt('Во сколько это обойдется?', 10000); // Осн. расходы 2
-const income = prompt('Введите дополнительную статью доходов, если есть.', 'Фриланс'); // Допольнительный доход
+let money, // Доход в месяц
+    addExpenses, // Дополнительные расходы
+    deposit, // Есть ли депозит?
+    income, // Допольнительный доход
+    expenses = [ ], // Основные расходы - название
+    amounts = [ ]; // Основные расходы - значения
 // Блок переменных Конец! //
 
 
 // Блок Программы //
+// Вписываем данные
+money = getOnlyNumberFromPrompt('Какой Ваш месячный доход?', 35000);
+addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую',
+'Вода, Газ, Электричество');
+deposit = confirm('Есть ли у вас депозит в банке?');
+income = prompt('Введите дополнительную статью доходов, если есть.', 'Фриланс');
+for (let i = 0; i < 5; i++) {
+    expenses[i] = prompt('Введите обязательную статью расходов.', i === 0 ? 'Учёба' : 'Еда');
+    amounts[i] = getOnlyNumberFromPrompt('Во сколько это обойдется?', i === 0 ? 13000 : 10000);
+}
+
 // Разбиваем строку трат на массив
 addExpenses = getArrayFromString(addExpenses);
 // Рассчитывем чистый доход в месяц
-const accumulatedMonth = getAccumulatedMonth( getIncomeMonth(money), getExpensesMonth(amount1, amount2) );
+const accumulatedMonth = getAccumulatedMonth( getIncomeMonth(money), getExpensesMonth(amounts) );
 // Рассчитываем дневной остаточный бюджет
 const budgetDay = getAccumulatedDay(accumulatedMonth);
-
 
 // Выводим все необходимые данные в консоль
 showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
-console.log('Основные траты за месяц:', getExpensesMonth(amount1, amount2));
+console.log('Основные траты за месяц:', getExpensesMonth(amounts));
 console.log('Дополнительные траты:', addExpenses);
 console.log('Месяцев до выполнения цели:', getTargetMonth(accumulatedMonth, mission));
 console.log('Бюджет на день:', budgetDay);
