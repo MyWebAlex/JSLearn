@@ -46,14 +46,14 @@ const getOnlyNumberFromPrompt = function(message, defaultValue) {
     } while ( !tmp );
     return tmp;
 };
-
+// функция, которая принимает текст из prompt
 const getPrompt = function(message, defaultValue) {
     let tmp;
     do { 
         tmp = prompt(message, defaultValue);
     } while ( !tmp );
     return tmp;
-}
+};
 // Функция, которая разбивает строку на подстроки через ', ' и приводит все символы к нижнему регистру
 const getArrayFromString = function(str) {
     str = str.toLowerCase();
