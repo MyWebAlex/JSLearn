@@ -16,7 +16,8 @@ const getAccumulatedMonth = function(incomes, expenses) {
 };
 // Функция, рассчитывающая количество месяцев до достижения цели
 const getTargetMonth = function(accumulatedMonth, mission) {
-    return Math.ceil(mission / accumulatedMonth);
+    let tmp = Math.ceil(mission / accumulatedMonth);
+    return tmp > 0 ? tmp : 'Цель не может быть достигнута';
 };
 // Функция, рассчитывающая остаток в день после доходов и расходов
 const getAccumulatedDay = function(accumulatedMonth) {
@@ -36,9 +37,9 @@ const getStatusIncome = function(accumulatedDay) {
 // Функция, которая через prompt требует число
 const getOnlyNumberFromPrompt = function(message, defaultMessage) {
     let tmp;
-    while ( !tmp ) { 
+    do { 
         tmp = parseInt( prompt(message, defaultMessage) );
-    }
+    } while ( !tmp );
     return tmp;
 };
 // Функция, которая разбивает строку на подстроки через ', ' и приводит все символы к нижнему регистру
