@@ -37,4 +37,5 @@ function start(number) {
 }
 
 const game = start(Math.floor(Math.random() * 100) + 1);
+console.dir('game: ', game);
 game(prompt('Угадай число от 1 до 100'));
