@@ -6,30 +6,14 @@
 const getIncomeMonth = function(income1) { // Позже добавить income2
     return income1;
 };
-// Функция, рассчитывающая все расходы
-const getExpensesMonth = function(expenses) {
-    let tmp = 0;
-    for (let i = 0; i < expenses.length; i++) {
-        tmp += expenses[i];
-    }
-    return tmp;
-};
+
 // Функция, рассчитывающая остаток в месяц после доходов и расходов
 const getAccumulatedMonth = function(incomes, expenses) {
     return incomes - expenses;
 };
-// Функция, рассчитывающая количество месяцев до достижения цели
-const getTargetMonth = function(accumulatedMonth, mission) {
-    let tmp = Math.ceil(mission / accumulatedMonth);
-    return tmp > 0 ? tmp : 'Цель не может быть достигнута';
-};
 // Функция, рассчитывающая остаток в день после доходов и расходов
 const getAccumulatedDay = function(accumulatedMonth) {
     return Math.floor(accumulatedMonth / 30);
-};
-// Функция, выводящая в консоль тип переменной
-const showTypeOf = function(variable) {
-    console.log(typeof variable, variable);
 };
 // Функция, отпределяющая уровень доходов
 const getStatusIncome = function(accumulatedDay) {
@@ -73,6 +57,32 @@ let money, // Доход в месяц
     amounts = [ ]; // Основные расходы - значения
 // Блок переменных Конец! //
 
+// Объект
+let appData = {
+    // Свойства
+    budget: money,
+    budgetDay: 0, 
+    budgetMonth: 0,
+    expensesMonth: 0,
+
+    // Функции
+    // Функция, рассчитывающая все расходы
+    getExpensesMonth(expenses) {
+        let tmp = 0;
+        for (let i = 0; i < expenses.length; i++) {
+            tmp += expenses[i];
+        }
+        return tmp;
+    },
+    
+    // Функция, рассчитывающая количество месяцев до достижения цели
+    getTargetMonth(accumulatedMonth, mission) {
+        let tmp = Math.ceil(mission / accumulatedMonth);
+        return tmp > 0 ? tmp : 'Цель не может быть достигнута';
+    }
+}
+// Объект Конец!
+
 
 // Блок Программы //
 // Вписываем данные
@@ -94,9 +104,6 @@ const accumulatedMonth = getAccumulatedMonth( getIncomeMonth(money), getExpenses
 const budgetDay = getAccumulatedDay(accumulatedMonth);
 
 // Выводим все необходимые данные в консоль
-showTypeOf(money);
-showTypeOf(income);
-showTypeOf(deposit);
 console.log('Основные траты за месяц:', getExpensesMonth(amounts));
 console.log('Дополнительные траты:', addExpenses);
 console.log('Месяцев до выполнения цели:', getTargetMonth(accumulatedMonth, mission));
