@@ -134,4 +134,5 @@ for (let item of appData.addExpenses) {
 }
 addExpensesStr = addExpensesStr.slice(0, addExpensesStr.length - 2);
 console.log('Возможные расходы: ', addExpensesStr);
+
 // Блок Программы Конец! //
