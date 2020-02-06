@@ -25,17 +25,12 @@ const getArrayFromString = function(str) {
     return str;
 };
 // Фнкция, которая считывает prompt в объект с заданными параметрами
-const getObjFromPrompt = function(count, mode, keyQuestion, keyDefault, valueQuestion, valueDefault) {
-    let obj = {};
+const getObjFromPrompt = function(obj, mode, keyQuestion, keyDefault, valueQuestion, valueDefault) {
     if (mode === 0) {
-        for (let i = 0; i < count; i++) {
-            obj[getPrompt(keyQuestion, keyDefault + i)] = getPrompt(valueQuestion, valueDefault);
-        }
+        obj[getPrompt(keyQuestion, keyDefault )] = getPrompt(valueQuestion, valueDefault);
     }
     if (mode === 1) {
-        for (let i = 0; i < count; i++) {
-            obj[getPrompt(keyQuestion, keyDefault + i)] = getOnlyNumberFromPrompt(valueQuestion, valueDefault);
-        }
+        obj[getPrompt(keyQuestion, keyDefault)] = getOnlyNumberFromPrompt(valueQuestion, valueDefault);
     }
     return obj;
 };
@@ -58,20 +53,32 @@ let appData = {
     expenses: {}, // Основные расходы
     addExpenses: [], // Дополнительные расходы
     deposit: false, // Есть ли депозит?
+    percentDeposit: 0,
+    moneyDeposit: 0,
     mission: 1000000, // Сколько хотим накопить
     period: 12, // За сколько месяцев хотим накопить
 
     // Методы
     asking: function() {
-        this.budget = getOnlyNumberFromPrompt('Какой Ваш месячный доход?', 35000);
-        this.income = prompt('Введите дополнительную статью доходов, если есть.', 'Фриланс');
+        this.budget = getOnlyNumberFromPrompt('Какой Ваш месячный доход?', 10000);
+        if (confirm('Есть ли у вас дополнительный источник заработка?')) {
+            this.incomes = getObjFromPrompt(this.incomes, 1, 'Какой у вас дополнительный зароботок?', 'Репетитор', 
+            'Сколько в месяц вы на этом зарабатываете?', 40000);
+        }
+        // this.income = prompt('Введите дополнительную статью доходов, если есть.', 'Фриланс');
         this.addExpenses = getArrayFromString(
             getPrompt('Перечислите возможные расходы за рассчитываемый период через запятую', 
             'Вода, Газ, Электричество')
         );
         this.deposit = confirm('Есть ли у вас депозит в банке?');
-        this.expenses = getObjFromPrompt(2, 1, 'Введите обязательную статью расходов.', 'Еда', 
+        if (this.deposit) {
+            this.percentDeposit = getOnlyNumberFromPrompt('Какой годовой процент?', 10);
+            this.moneyDeposit = getOnlyNumberFromPrompt('Какая сумма заложена?', 10000);
+        }
+        this.expenses = getObjFromPrompt(this.expenses, 1, 'Введите обязательную статью расходов.', 'Еда', 
         'Во сколько это обойдется?', 10000);
+        this.expenses = getObjFromPrompt(this.expenses, 1, 'Введите обязательную статью расходов.', 'Учёба', 
+        'Во сколько это обойдется?', 13000);
         this.expensesMonth = this.getExpensesMonth(this.expenses);
         this.getBudget();
     },
@@ -99,6 +106,9 @@ let appData = {
         else if (this.budgetDay >= 600) { return 'У вас средний уровень дохода'; }
         else if (this.budgetDay >= 0) { return 'К сожалению у вас уровень дохода ниже среднего'; }
         else { return 'В вашей жизни Что-то пошло не так'; }
+    },
+    calcSavedMoney: function() {
+        return this.budgetMonth * this.period;
     }
 };
 // Объект Конец!
@@ -118,4 +128,10 @@ for (let key in appData) {
         console.log('Свойство:', key, ' значение:', appData[key]);
     }
 }
+let addExpensesStr = '';
+for (let item of appData.addExpenses) {
+    addExpensesStr += item[0].toUpperCase() + item.slice(1) + ', ';
+}
+addExpensesStr = addExpensesStr.slice(0, addExpensesStr.length - 2);
+console.log('Возможные расходы: ', addExpensesStr);
 // Блок Программы Конец! //
