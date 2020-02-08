@@ -134,4 +134,30 @@ for (let item of appData.addExpenses) {
 }
 addExpensesStr = addExpensesStr.slice(0, addExpensesStr.length - 2);
 console.log('Возможные расходы: ', addExpensesStr);
+
+
+let startButton = document.getElementById('start');
+let plusButton1 = document.getElementsByTagName('button')[0];
+let plusButton2 = document.getElementsByTagName('button')[1];
+let checkDeposit = document.querySelector('#deposit-check');
+let budgetMonthValue = document.getElementsByClassName('budget_month-value')[0];
+let budgetDayValue = document.getElementsByClassName('budget_day-value')[0];
+let expensesMonthValue = document.getElementsByClassName('expenses_month-value')[0];
+let additionalIncomeValue = document.getElementsByClassName('additional_income-value')[0];
+let additionalExpensesValue = document.getElementsByClassName('additional_expenses-value')[0];
+let incomePeriodValue = document.getElementsByClassName('income_period-value')[0];
+let targetMonthValue = document.getElementsByClassName('target_month-value')[0];
+let salaryAmount = document.querySelector('.target_month-value');
+let incomeTitle = document.querySelector('.income-items .income-title');
+let incomeAmount = document.querySelector('.income-items .income-amount');
+let additionalIncomeItem1 = document.querySelector('.additional_income-item');
+let additionalIncomeItem2 = document.querySelector('.additional_income-item');
+let expensesTitle = document.querySelector('.expenses-title');
+let expensesAmount = document.querySelector('.expenses-amount');
+let additionalExpensesItem = document.querySelector('.additional_expenses-item');
+let depositAmount = document.querySelector('.deposit-amount');
+let depositPercent = document.querySelector('.deposit-percent');
+let targetAmount = document.querySelector('.target-amount');
+let periodSelect = document.querySelector('.period-select');
+
 // Блок Программы Конец! //
