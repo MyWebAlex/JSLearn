@@ -242,7 +242,6 @@ let appData = {
 
 
 // Блок Программы //
-
 appData.setStartBtn();
 startButton.addEventListener('click', appData.start.bind(appData));
 cancelButton.addEventListener('click', appData.reset.bind(appData));
